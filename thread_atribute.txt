@@ -1,0 +1,42 @@
+@ initialize and destroy
+
+#include <pthread.h>
+int pthread_attr_init(pthread_attr_t *attr);
+
+int pthrad_attr_destroy(pthread_attr_t *attr);
+
+init func should call by pthread create !!!!
+
+@ get the thread atribute
+
+#define _GNU_SOURCE
+#include <pthread.h>
+int pthread_getattr_up(pthread_t thread, pthread_attr_t *attr);
+
+
+@ set or get detach state 
+
+#include <pthread.h>
+
+int pthread_attr_setdetachstate(pthread_attr_t *attr, int detachstate);
+
+int pthread_attr_getdetachstate(pthread_attr_t *attr, int *detachstate);
+
+- DetachState param valule
+- PTHREAD_CREATE_JOINABLE   ==== new thread is connected, defalue value.
+- PTHREAD_CATETE_DETACHED   ==== new thead is detached.
+
+@set and get statck atribute
+
+#include <pthrad.h>
+
+int pthread_attr_setstack(pthread_attr_t *attr, void *stackaddr, size_t stacksize);
+
+
+int pthread_attr_getstack(pthread_attr_t *attr, void **stackadddr, size_t *stacksize);
+
+
+
+
+
+
