@@ -1,0 +1,42 @@
+@Initilize a global mutex in static
+
+pthread_mutex_t mtx = PTHREAD_MUTEX_INITILIZER;
+
+@Initilize mutex in with dynamic
+int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr);
+
+int pthread_mutex_destroy(pthread_mutex_t *mutex);
+
+@lock and unlock 
+when t2 want to own the mutex when t1 is own the mutex, t2 will be obstruct. !!!! 
+
+int pthread_mutex_lock(pthread_mutex_t *mutex);
+int pthread_mutex_unlock(pthread_mutex_t *mutex);
+
+
+
+###   thread synchronization   ###
+
+thread syncronization: wo must be sure the orde of execute between the number of threads
+
+@static initilize
+pthread_connd_t connd = PTHREAD_COND_INITILIZER;
+
+@dynamic initlize 
+int pthread_connd_init(pthread_connd_t *connd, const pthread_cond_attr_t *attr);
+
+@inform and wait for condition variate
+#include <pthread.h>
+// wait for a condition variate
+int pthread_connd_wait(pthread_cond_t *cond, pthread_mutex_t *mutex);
+
+// wake up a thread that wait the condition variate
+int pthread_connd_singal(pthread_cond_t *cond);
+
+// wake up all thread that waittiing for the variate
+int pthread_cond_broadcast(pthread_cond_t *cond);
+
+
+
+
+
